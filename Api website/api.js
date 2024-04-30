@@ -1,9 +1,10 @@
-let maxpoke = 40;
+let maxpoke = 42;
 let pokemonlist = [];
 let num;
+let i = 1;
 window.onload = async function(){
     
-for(let i = 1; i <= maxpoke; i++){
+for( ;i <= maxpoke; i++){
     await pokefetch(i);
     let pokemon = document.createElement("div");
     pokemon.id = i;
@@ -13,7 +14,8 @@ for(let i = 1; i <= maxpoke; i++){
         <img alt="pokemon img ${pokemon.id}" src ="${pokemonlist[i]["image"]}">
         <h1>Name: ${pokemonlist[i]["name"]}</h1>
         <h3>Type: ${pokemonlist[i]["type"]}</h3>
-        <p>Description: ${pokemonlist[i]["desc"]}</p>
+        <h3>Description: </h3>
+        <p>${pokemonlist[i]["desc"]}</p>
     </li>
     
     `
@@ -36,7 +38,7 @@ async function pokefetch(num){
     let url = "https://pokeapi.co/api/v2/pokemon/"+ num.toString();
     const res = await fetch (url);
     const data = await res.json();
-    console.log(data); 
+    // console.log(data); 
 
     let name = data["name"];
     let type = data["types"][0]["type"]["name"];
@@ -55,8 +57,14 @@ async function pokefetch(num){
 
 pokefetch();
 
-
-function display(){
-    
+// Next page 
+function next(){
+    maxpoke = maxpoke + maxpoke;
+    i = maxpoke;
 }
-display();
+
+// Back a page 
+function back(){
+    maxpoke = maxpoke - maxpoke;
+    i = i -maxpoke;
+}
