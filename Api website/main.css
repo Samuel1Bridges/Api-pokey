@@ -1,0 +1,22 @@
+body{
+    display: grid;
+}
+
+.parant {
+    display: grid;
+    height: 200px;
+    grid-template-columns:30em 30em 30em;
+    
+}
+
+.child {
+    display:inline-block;
+    border: 3px solid black;
+    width: 15em;  
+    height: 20em;  
+    padding: 1em 1em 1em 1em;
+    margin: 0.10em 0.10em 0.10em 0.10em ; 
+}
+
+.child img{
+}
